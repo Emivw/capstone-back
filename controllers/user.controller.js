@@ -7,6 +7,16 @@ const { hashSync, genSaltSync, compareSync } = require("bcrypt");
 
 
 
+userRouter.get('user', async (req, res, next) => {
+    try {
+        const user = await db.getAllUsers
+        req.user= user;
+        next();
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(404);
+    }
+});
 userRouter.param('userId', async (req, res, next, userId) => {
     try {
         const user = await db.getUserById("User", userId);

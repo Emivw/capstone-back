@@ -5,11 +5,20 @@ const prodRouter = express.Router();
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
 
 
-
+prodRouter.get('/products', async (req, res, next) => {
+    try {
+        const prod = await db.getAllProd
+        req.prod = prod;
+        next();
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(404);
+    }
+});
 
 prodRouter.param('prodId', async (req, res, next, prodId) => {
     try {
-        const prod = await db.getprodById("prod", prodId);
+        const prod = await db.getProdById("prod", prodId);
         req.prod = prod;
         next();
     } catch (e) {

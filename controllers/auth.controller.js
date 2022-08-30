@@ -1,7 +1,7 @@
 const express = require('express');
 const authRouter = express.Router();
 const userRouter = require('./user.controller');
-const prodRouter = require('./products.controller');
+const prodRouter = require('./product.controller');
 const jsonwebtoken = require('jsonwebtoken');
 const { db } = require('../config/db');
 // const { getUserByEmail } = require('../config/db');
