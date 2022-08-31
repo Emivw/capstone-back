@@ -9,7 +9,7 @@ const prodRouter = require("./controllers/product.controller");
 const userRouter = require("./controllers/user.controller");
 
 const app = express();
-const PORT = process.env.PORT | 3000;
+const PORT = process.env.PORT || 3000;
 
 
 app.use(express.json(), bodyParser.json(), bodyParser.urlencoded({ extended: true }), (req, res, next) => {
