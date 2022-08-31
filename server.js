@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 authRouter.use(cookieParser());
 
 app.use('/auth', authRouter);
-app.use('/prod', prodRouter);
+app.use('/products', prodRouter);
 app.use('/user', userRouter);
 
 app.listen(PORT, () => {
