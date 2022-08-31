@@ -2,8 +2,6 @@ const express = require('express');
 const {db} = require('../config/db');
 const prodRouter = express.Router();
 
-const { hashSync, genSaltSync, compareSync } = require("bcrypt");
-
 
 prodRouter.get('/', async (req, res, next) => {
     try {
@@ -16,7 +14,7 @@ prodRouter.get('/', async (req, res, next) => {
     }
 });
 
-prodRouter.get('/:prodID', async (req, res, next, prodID) => {
+prodRouter.params('/:prodID', async (req, res, next, prodID) => {
     try {
         const prod = await db.getProdById(prodID);
         req.prod = prod;
@@ -29,10 +27,10 @@ prodRouter.get('/:prodID', async (req, res, next, prodID) => {
 
 
 
-// prodRouter.get('/:prodID', (req, res, next) => {
-//     res.status(200).json({ prod: req.prod });
+prodRouter.get('/:prodID', (req, res, next) => {
+    res.status(200).json({ prod: req.prod });
 
-// });
+});
 
 
 
