@@ -9,21 +9,22 @@ const prodRouter = require("./controllers/product.controller");
 const userRouter = require("./controllers/user.controller");
 
 const app = express();
+const PORT = process.env.PORT | 3000;
 
 
-app.use((req, res, next) => {
+app.use(express.json(), bodyParser.json(), bodyParser.urlencoded({ extended: true }), (req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", "*");
     res.setHeader("Access-Control-Allow-Methods", "*");
     next();
-});
-app.use(cors({
+}, cors({
     origin: ['http://192.168.9.28:8080', 'http://localhost:8080'],
     credentials: true
 }));
-const PORT = process.env.PORT | 3000;
+app.get('/', (req, res) => {
+    res.json({ message: 'restfull-api working' });
+});
 
-app.use(bodyParser.json());
 
 authRouter.use(cookieParser());
 
