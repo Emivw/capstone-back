@@ -103,7 +103,7 @@ db.allProd = () => {
 
 db.getProdById = (id) => {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM Products WHERE id = ?', [id], (error, prod) => {
+        pool.query('SELECT * FROM Products WHERE prodID = ?', [id], (error, prod) => {
             if (error) {
                 return reject(error);
             }

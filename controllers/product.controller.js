@@ -16,9 +16,9 @@ prodRouter.get('/products', async (req, res, next) => {
     }
 });
 
-prodRouter.param('prodId', async (req, res, next, prodId) => {
+prodRouter.param('prodID', async (req, res, next, prodID) => {
     try {
-        const prod = await db.getProdById("prod", prodId);
+        const prod = await db.getProdById("prod", prodID);
         req.prod = prod;
         next();
     } catch (e) {
@@ -29,7 +29,7 @@ prodRouter.param('prodId', async (req, res, next, prodId) => {
 
 
 
-prodRouter.get('/:prodId', (req, res, next) => {
+prodRouter.get('/:prodID', (req, res, next) => {
     res.status(200).json({ prod: req.prod });
 
 });
