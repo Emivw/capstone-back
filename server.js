@@ -22,7 +22,7 @@ app.use(express.json(), bodyParser.json(), bodyParser.urlencoded({ extended: tru
     credentials: true
 }));
 app.get('/', (req, res) => {
-    res.json({ message: 'restfull-api working' });
+    res.json({ message: 'restfull-api working as intended' });
 });
 
 

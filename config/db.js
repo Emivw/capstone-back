@@ -13,6 +13,16 @@ const pool = mysql.createPool({
 
 });
 let db = {};
+// db.getProdById = (prodID) => {
+//     return new Promise((resolve, reject) => {
+//         pool.query('SELECT * FROM Products WHERE prodID = ?', [prodID], (error, product) => {
+//             if (error) {
+//                 return reject(error);
+//             }
+//             return resolve(product[0]);
+//         });
+//     });
+// };
 //cb object
 // ***Requests to the User table ***
 db.allUser = () => {
@@ -91,26 +101,17 @@ db.deleteUser = (id) => {
 // get products 
 db.allProd = () => {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM Products ', (error, prod) => {
+        pool.query('SELECT * FROM Products ', (error, products) => {
             if (error) {
                 return reject(error);
             }
-            return resolve(prod);
+            return resolve(products);
         });
     });
 };
 
 
-db.getProdById = (prodID) => {
-    return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM Products WHERE prodID = ?', [prodID], (error, prod) => {
-            if (error) {
-                return reject(error);
-            }
-            return resolve(prod[0]);
-        });
-    });
-};
+
 
 
 
@@ -143,7 +144,7 @@ db.updateProd = (fullname, role_id, email, password, id) => {
 
 db.deleteProd = (id) => {
     return new Promise((resolve, reject) => {
-        pool.query('DELETE FROM Products WHERE id = ?', [id], (error) => {
+        pool.query('DELETE FROM Products WHERE prodID = ?', [id], (error) => {
             if (error) {
                 return reject(error);
             }
