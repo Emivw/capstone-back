@@ -13,9 +13,21 @@ prodRouter.get('/', async (req, res, next) => {
         res.sendStatus(404);
     }
 });
+prodRouter.get('/prod/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const products = await db.getProdById(id);
+        res.json({ products: products });
+        // req.products = products;
+        next();
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(404);
+    }
+});
 prodRouter.get('/:id', (req, res, next) => {
     pool.query(
-        `SELECT * FROM Products WHERE prodID = ?`,
+        `SELECT * FROM Products1 WHERE prodID = ?`,
         req.params.id,
         (err, results) => {
             // user does not exists

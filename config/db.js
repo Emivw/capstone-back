@@ -13,16 +13,16 @@ const pool = mysql.createPool({
 
 });
 let db = {};
-// db.getProdById = (prodID) => {
-//     return new Promise((resolve, reject) => {
-//         pool.query('SELECT * FROM Products WHERE prodID = ?', [prodID], (error, product) => {
-//             if (error) {
-//                 return reject(error);
-//             }
-//             return resolve(product[0]);
-//         });
-//     });
-// };
+db.getProdById = (id) => {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT * FROM Products1 WHERE prodID = ?', [id], (error, product) => {
+            if (error) {
+                return reject(error);
+            }
+            return resolve(product[0]);
+        });
+    });
+};
 //cb object
 // ***Requests to the User table ***
 db.allUser = () => {
