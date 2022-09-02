@@ -25,25 +25,6 @@ prodRouter.get('/prod/:id', async (req, res, next) => {
         res.sendStatus(404);
     }
 });
-prodRouter.get('/:id', (req, res, next) => {
-    pool.query(
-        `SELECT * FROM Products1 WHERE prodID = ?`,
-        req.params.id,
-        (err, results) => {
-            // user does not exists
-            if (err) {
-                return res.status(400).send({
-                    msg: err
-                });
-            }
-            else {
-                res.json({
-                    status: 200,
-                    results: results
-                })
-            }
-        })
-});
 
 prodRouter.post('/', async (req, res, next) => {
     try {
