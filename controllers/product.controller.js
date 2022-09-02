@@ -33,76 +33,74 @@ prodRouter.get('/:id', (req, res, next) => {
         })
 });
 
-// prodRouter.post('/', async (req, res, next) => {
-//     try {
-//         const fullname = req.body.prod.fullname;
-//         const email = req.body.prod.email;
-//         let password = req.body.prod.password;
+prodRouter.post('/', async (req, res, next) => {
+    try {
+        const prodTitle = req.body.products.prodTitle;
+        const prodCat = req.body.products.prodCat;
+        const prodStock = req.body.products.prodStock;
+        const prodDesc = req.body.products.prodDesc;
+        const prodPrice = req.body.products.prodPrice;
 
 
-//         if (!fullname || !email || !password) {
-//             return res.sendStatus(400);
-//         }
-
-//         const salt = genSaltSync(10);
-//         password = hashSync(password, salt);
-
-
-
-//         const prod = await db.insertprod(prodName, email, password);
-//         res.json({ prod: prod });
-
-
-//     } catch (e) {
-//         console.log(e);
-//         res.sendStatus(400);
-//     }
-// });
+        if (!prodTitle || !prodCat || !prodStock || !prodDesc || !prodColor || !prodPrice) {
+            return res.sendStatus(400);
+        }
 
 
 
-
-// prodRouter.put('/:id', async (req, res, next) => {
-//     try {
-//         const prodName = req.body.prod.prodName;
-//         const role = req.body.prod.role;
-//         const email = req.body.prod.email;
-//         let password = req.body.prod.password;
-//         const prodId = req.params.id;
+        const products = await db.insertprod(prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice);
+        res.json({ products: products });
 
 
-//         if (!prodName || !role || !email || !password) {
-//             return res.sendStatus(400);
-//         }
-
-//         const salt = genSaltSync(10);
-//         password = hashSync(password, salt);
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(400);
+    }
+});
 
 
 
-//         const prod = await db.updateProd(prodName, role, email, password, prodId);
-//         res.json({ message: "prod updated" });
+
+prodRouter.put('/:id', async (req, res, next) => {
+    try {
+        const prodTitle = req.body.products.prodTitle;
+        const prodCat = req.body.products.prodCat;
+        const prodStock = req.body.products.prodStock;
+        const prodDesc = req.body.products.prodDesc;
+        const prodPrice = req.body.products.prodPrice;
+        const id = req.params.id;
 
 
-//     } catch (e) {
-//         console.log(e);
-//         res.sendStatus(400);
-//     }
-// });
+        if (!prodTitle || !prodCat || !prodStock || !prodDesc || !prodColor || !prodPrice) {
+            return res.sendStatus(400);
+        }
 
 
 
-// prodRouter.delete('/:id', async (req, res, next) => {
-//     try {
-//         const prodId = req.params.id
-//         const prod = await db.deleteProd(prodId);
-//         return res.sendStatus(204);
+        const products = await db.insertprod(prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, id);
+        res.json({ products: products });
 
-//     } catch (e) {
-//         console.log(e);
-//         res.sendStatus(400);
-//     }
-// });
+
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(400);
+    }
+});
+
+
+
+prodRouter.delete('/:id', async (req, res, next) => {
+    try {
+        const prodId = req.params.id
+        const products = await db.deleteProd(prodId);
+        res.json({ message: "product deleted" })
+        return res.sendStatus(204);
+
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(400);
+    }
+});
 
 
 
