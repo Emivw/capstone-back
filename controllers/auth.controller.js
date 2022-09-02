@@ -19,7 +19,7 @@ authRouter.post('/register', async (req, res, next) => {
         const email = req.body.email;
         const phone = req.body.phone;
         let password = req.body.password;
-
+        let role_id = 3;
 
         if (!fullname || !email || !password || !phone) {
             return res.sendStatus(400);
@@ -30,7 +30,7 @@ authRouter.post('/register', async (req, res, next) => {
 
 
 
-        const user = await db.insertUser(fullname, email, phone, password);
+        const user = await db.insertUser(fullname, email, password, phone, role_id);
 
         const jsontoken = jsonwebtoken.sign({ user: user }, process.env.SECRET_KEY, { expiresIn: '30m' });
         res.cookie('token', jsontoken, { httpOnly: true, secure: true, SameSite: 'strict', expires: new Date(Number(new Date()) + 30 * 60 * 1000) }); //we add secure: true, when using https.

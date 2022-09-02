@@ -32,33 +32,6 @@ prodRouter.get('/:id', (req, res, next) => {
             }
         })
 });
-// prodRouter.get('/:id', async (req, res, next, id) => {
-//     try {
-//         const product = await db.getProdById(id);
-//         console.log(product);
-//         products = res.json({ product: product });
-//         next();
-//     } catch (e) {
-//         console.log(e);
-//         res.sendStatus(404);
-//     }
-// });
-
-
-
-// prodRouter.get('/:id', (req, res) => {
-//     try {
-//         res.status(200).json({ product: products });
-//     }
-//     catch (e) {
-//     console.log(e);
-//     res.sendStatus(404);
-// }
-
-// });
-
-
-
 
 // prodRouter.post('/', async (req, res, next) => {
 //     try {

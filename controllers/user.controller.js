@@ -70,7 +70,7 @@ userRouter.post('/', async (req, res, next) => {
 userRouter.put('/:id', async (req, res, next) => {
     try {
         const userName = req.body.user.userName;
-        const role = req.body.user.role;
+        const role_id = req.body.user.role;
         const email = req.body.user.email;
         let password = req.body.user.password;
         const userId = req.params.id;

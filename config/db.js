@@ -60,9 +60,9 @@ db.getUserById = (id) => {
 
 
 
-db.insertUser = (fullname, email, password) => {
+db.insertUser = (fullname, email, password, role_id, phone,) => {
     return new Promise((resolve, reject) => {
-        pool.query('INSERT INTO Users (fullname, email, password) VALUES (?,  ?, ?)', [fullname, email, password], (error, result) => {
+        pool.query('INSERT INTO Users (fullname, email, password, role_id, phone) VALUES (?,  ?, ?, ?, ?)', [fullname, email, password, role_id, phone], (error, result) => {
             if (error) {
                 return reject(error);
             }
@@ -75,12 +75,12 @@ db.insertUser = (fullname, email, password) => {
 
 db.updateUser = (fullname, role_id, email, password, id) => {
     return new Promise((resolve, reject) => {
-        pool.query('UPDATE User SET fullname = ?, role_id= ?, email= ?, password=? WHERE id = ?', [fullname, role_id, email, password, id], (error) => {
+        pool.query('UPDATE User SET fullname = ?, role_id= ?, email= ?, password=?, phone=? WHERE id = ?', [fullname, role_id, email, password, phone, id], (error) => {
             if (error) {
                 return reject(error);
             }
 
-            return resolve();
+            return resolve(console.log("User updated"));
         });
     });
 };
@@ -101,7 +101,7 @@ db.deleteUser = (id) => {
 // get products 
 db.allProd = () => {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM Products ', (error, products) => {
+        pool.query('SELECT * FROM Products1', (error, products) => {
             if (error) {
                 return reject(error);
             }
@@ -115,9 +115,9 @@ db.allProd = () => {
 
 
 
-db.insertProd = (fullname, email, password) => {
+db.insertProd = (prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImgs) => {
     return new Promise((resolve, reject) => {
-        pool.query('INSERT INTO Products (fullname, email, password) VALUES (?,  ?, ?)', [fullname, email, password], (error, result) => {
+        pool.query('INSERT INTO Products1 (prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImgs) VALUES (?,  ?, ?, ?, ?, ?, ?)', [prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImgs], (error, result) => {
             if (error) {
                 return reject(error);
             }
@@ -128,9 +128,9 @@ db.insertProd = (fullname, email, password) => {
 };
 
 
-db.updateProd = (fullname, role_id, email, password, id) => {
+db.updateProd = (prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, id) => {
     return new Promise((resolve, reject) => {
-        pool.query('UPDATE Products SET fullname = ?, role_id= ?, email= ?, password=? WHERE id = ?', [fullname, role_id, email, password, id], (error) => {
+        pool.query('UPDATE Product1 SET prodTitle = ?, prodCat= ?, prodStock= ?, prodDesc=?, prodColor=?, prodPrice=?, WHERE prodID = ?', [prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, id], (error) => {
             if (error) {
                 return reject(error);
             }
