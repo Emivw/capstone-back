@@ -13,7 +13,7 @@ prodRouter.get('/', async (req, res, next) => {
         res.sendStatus(404);
     }
 });
-prodRouter.get('/prod/:id', async (req, res, next) => {
+prodRouter.get('/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
         const products = await db.getProdById(id);
