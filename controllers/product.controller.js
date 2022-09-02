@@ -16,8 +16,8 @@ prodRouter.get('/', async (req, res, next) => {
 prodRouter.get('/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
-        const products = await db.getProdById(id);
-        res.json({ products: products });
+        const product = await db.getProdById(id);
+        res.json({ product: product });
         // req.products = products;
         next();
     } catch (e) {
