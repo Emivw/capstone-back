@@ -80,7 +80,7 @@ userRouter.post('/', async (req, res, next) => {
 userRouter.put('/:id', async (req, res, next) => {
     try {
         const userName = req.body.user.userName;
-        const role_id = req.body.user.role;
+        const role_id = req.body.user.role_id;
         const email = req.body.user.email;
         let password = req.body.user.password;
         const id = req.params.id;
