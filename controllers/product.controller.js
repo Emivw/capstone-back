@@ -28,11 +28,14 @@ prodRouter.get('/:id', async (req, res, next) => {
 
 prodRouter.post('/', async (req, res, next) => {
     try {
-        const prodTitle = req.body.products.prodTitle;
-        const prodCat = req.body.products.prodCat;
-        const prodStock = req.body.products.prodStock;
-        const prodDesc = req.body.products.prodDesc;
-        const prodPrice = req.body.products.prodPrice;
+        const prodTitle = req.body.prodTitle;
+        const prodCat = req.body.prodCat;
+        const prodStock = req.body.prodStock;
+        const prodDesc = req.body.prodDesc;
+        const prodColor = req.body.prodColor;
+        const prodPrice = req.body.prodPrice;
+        const prodImg1 = req.body.prodImg1;
+        const prodImgs = req.body.prodImgs;
 
 
         if (!prodTitle || !prodCat || !prodStock || !prodDesc || !prodColor || !prodPrice) {
@@ -41,7 +44,7 @@ prodRouter.post('/', async (req, res, next) => {
 
 
 
-        const products = await db.insertprod(prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice);
+        const products = await db.insertProd(prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, prodImgs);
         res.json({ products: products });
 
 

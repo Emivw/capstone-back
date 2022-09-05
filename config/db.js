@@ -60,9 +60,9 @@ db.getUserById = (id) => {
 
 
 
-db.insertUser = (fullname, email, password, role_id, phone) => {
+db.insertUser = (role_id, email, password, fullname, phone) => {
     return new Promise((resolve, reject) => {
-        pool.query('INSERT INTO Users (fullname, email, password, role_id, phone, createdAt, updatedAt) VALUES (?,  ?, ?, ?, ?, now(), now())', [fullname, email, password, role_id, phone], (error, result) => {
+        pool.query('INSERT INTO Users (role_id, email, password, fullname, phone, createdAt, updatedAt) VALUES (?,  ?, ?, ?, ?, now(), now())', [role_id, email, password, fullname, phone], (error, result) => {
             if (error) {
                 return reject(error);
             }
@@ -115,9 +115,9 @@ db.allProd = () => {
 
 
 
-db.insertProd = (prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImgs) => {
+db.insertProd = (prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, prodImgs) => {
     return new Promise((resolve, reject) => {
-        pool.query('INSERT INTO Products1 (prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImgs) VALUES (?,  ?, ?, ?, ?, ?, ?)', [prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImgs], (error, result) => {
+        pool.query('INSERT INTO Products1 (prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, prodImgs) VALUES (?,  ?, ?, ?, ?, ?, ?, ?)', [prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, prodImgs], (error, result) => {
             if (error) {
                 return reject(error);
             }
