@@ -24,21 +24,22 @@ authRouter.post('/register', async (req, res, next) => {
         if (!fullname || !email || !password || !phone) {
             return res.sendStatus(400);
         }
-
+        
         const salt = genSaltSync(10);
         password = hashSync(password, salt);
-
-
-
+        
+        
+        
         const user = await db.insertUser(role_id, email, password, fullname, phone);
-
+        
         const jsontoken = jsonwebtoken.sign({ user: user }, process.env.SECRET_KEY, { expiresIn: '30m' });
         res.cookie('token', jsontoken, { httpOnly: true, secure: true, SameSite: 'strict', expires: new Date(Number(new Date()) + 30 * 60 * 1000) }); //we add secure: true, when using https.
-
+        
+        let users = await db.getUserByEmail(email);
 
         res.json({
             token: jsontoken,
-            user: user
+            user: users
         });
 
         //return res.redirect('/mainpage');

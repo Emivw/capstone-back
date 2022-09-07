@@ -32,11 +32,11 @@ app.get('/', (req, res) => {
             deleteProducts: "/products/id"
         },
         users: {
-            getUsers: "/users",
-            getUser: "/users/id",
-            postUser: "/users",
-            patchUser: "/users/id",
-            deleteUser: "/users/id"
+            getUsers: "/user",
+            getUser: "/user/id",
+            postUser: "/user",
+            patchUser: "/user/id",
+            deleteUser: "/user/id"
         },
         auth: {
             Register: "/auth/register",
