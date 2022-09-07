@@ -36,7 +36,10 @@ authRouter.post('/register', async (req, res, next) => {
         res.cookie('token', jsontoken, { httpOnly: true, secure: true, SameSite: 'strict', expires: new Date(Number(new Date()) + 30 * 60 * 1000) }); //we add secure: true, when using https.
 
 
-        res.json({ token: jsontoken });
+        res.json({
+            token: jsontoken,
+            user: user
+        });
 
         //return res.redirect('/mainpage');
 
@@ -105,7 +108,7 @@ async function verifyToken(req, res, next) {
 
                 console.log(authData.user.role_id);
                 const role = authData.user.role_id;
-                if (role === "admin") { 
+                if (role === "admin") {
 
                     next();
                 } else {
