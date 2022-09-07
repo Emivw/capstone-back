@@ -22,7 +22,27 @@ app.use(express.json(), bodyParser.json(), bodyParser.urlencoded({ extended: tru
     credentials: true
 }));
 app.get('/', (req, res) => {
-    res.json({ message: 'restfull-api working as intended' });
+    res.json({
+        message: 'paths on how to use this api',
+        products: {
+            getProducts: "/products",
+            getProduct: "/products/id",
+            postProducts: "/products",
+            patchProducts: "/products/id",
+            deleteProducts: "/products/id"
+        },
+        users: {
+            getUsers: "/users",
+            getUser: "/users/id",
+            postUser: "/users",
+            patchUser: "/users/id",
+            deleteUser: "/users/id"
+        },
+        auth: {
+            Register: "/auth/register",
+            login: "/auth/login"
+        }
+    });
 });
 
 
