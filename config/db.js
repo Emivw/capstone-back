@@ -144,7 +144,7 @@ db.updateProd = (prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, 
 
 db.deleteProd = (id) => {
     return new Promise((resolve, reject) => {
-        pool.query('DELETE FROM Products WHERE prodID = ?', [id], (error) => {
+        pool.query('DELETE FROM Products1 WHERE prodID = ?', [id], (error) => {
             if (error) {
                 return reject(error);
             }
