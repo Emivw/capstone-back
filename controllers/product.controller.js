@@ -89,8 +89,7 @@ prodRouter.delete('/:id', async (req, res, next) => {
     try {
         const prodId = req.params.id
         const products = await db.deleteProd(prodId);
-        res.json({ message: "product deleted" })
-        return res.sendStatus(204);
+        res.sendStatus(204).json({ message: "product deleted" })
 
     } catch (e) {
         console.log(e);
