@@ -59,21 +59,23 @@ prodRouter.post('/', async (req, res, next) => {
 
 prodRouter.patch('/:id', async (req, res, next) => {
     try {
-        const prodTitle = req.body.products.prodTitle;
-        const prodCat = req.body.products.prodCat;
-        const prodStock = req.body.products.prodStock;
-        const prodDesc = req.body.products.prodDesc;
-        const prodPrice = req.body.products.prodPrice;
+        const prodTitle = req.body.prodTitle;
+        const prodCat = req.body.prodCat;
+        const prodStock = req.body.prodStock;
+        const prodDesc = req.body.prodDesc;
+        const prodPrice = req.body.prodPrice;
+        const prodImg1 = req.body.prodImg1;
+        const prodImgs = req.body.prodImgs;
         const id = req.params.id;
 
 
-        if (!prodTitle || !prodCat || !prodStock || !prodDesc || !prodColor || !prodPrice) {
+        if (!prodTitle || !prodCat || !prodStock || !prodDesc || !prodColor || !prodPrice || !prodImg1 || !prodImgs) {
             return res.sendStatus(400);
         }
 
 
 
-        const products = await db.insertprod(prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, id);
+        const products = await db.insertprod(prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, prodImgs, id);
         res.json({ products: products });
 
 
