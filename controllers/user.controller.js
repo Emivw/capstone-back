@@ -48,11 +48,11 @@ userRouter.get('/:id', async (req, res, next) => {
 
 userRouter.post('/', async (req, res, next) => {
     try {
-        const fullname = req.body.user.fullname;
-        const email = req.body.user.email;
-        let password = req.body.user.password;
-        const role_id = req.body.user.role_id;
-        const phone = req.body.user.phone;
+        const fullname = req.body.fullname;
+        const email = req.body.email;
+        let password = req.body.password;
+        const role_id = req.body.role_id;
+        const phone = req.body.phone;
 
 
         if (!fullname || !email || !password || !phone || !role_id) {
@@ -79,10 +79,10 @@ userRouter.post('/', async (req, res, next) => {
 
 userRouter.put('/:id', async (req, res, next) => {
     try {
-        const userName = req.body.user.userName;
-        const role_id = req.body.user.role_id;
-        const email = req.body.user.email;
-        let password = req.body.user.password;
+        const fullname = req.body.fullname;
+        const role_id = req.body.role_id;
+        const email = req.body.email;
+        let password = req.body.password;
         const id = req.params.id;
 
 
