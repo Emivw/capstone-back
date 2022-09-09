@@ -60,9 +60,9 @@ db.getUserById = (id) => {
 
 
 
-db.insertUser = (role_id, email, password, fullname, phone) => {
+db.insertUser = (fullname, email, password, role_id, phone) => {
     return new Promise((resolve, reject) => {
-        pool.query('INSERT INTO Users (role_id, email, password, fullname, phone, createdAt, updatedAt) VALUES (?,  ?, ?, ?, ?, now(), now())', [role_id, email, password, fullname, phone], (error, result) => {
+        pool.query('INSERT INTO Users (fullname, email, password, role_id, phone, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, now(), now())', [fullname, email, password, role_id, phone], (error, result) => {
             if (error) {
                 return reject(error);
             }
