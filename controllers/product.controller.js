@@ -63,6 +63,7 @@ prodRouter.put('/:id', async (req, res, next) => {
         const prodCat = req.body.prodCat;
         const prodStock = req.body.prodStock;
         const prodDesc = req.body.prodDesc;
+        const prodColor = req.body.prodColor;
         const prodPrice = req.body.prodPrice;
         const prodImg1 = req.body.prodImg1;
         const id = req.params.id;

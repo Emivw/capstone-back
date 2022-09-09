@@ -130,7 +130,7 @@ db.insertProd = (prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, 
 
 db.updateProd = (prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, id) => {
     return new Promise((resolve, reject) => {
-        pool.query('UPDATE Product1 SET prodTitle = ?, prodCat= ?, prodStock= ?, prodDesc=?, prodColor=?, prodPrice=?, prodImg1 =?, WHERE prodID = ?', [prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, id], (error) => {
+        pool.query('UPDATE Products1 SET prodTitle = ?, prodCat= ?, prodStock= ?, prodDesc=?, prodColor=?, prodPrice=?, prodImg1 =? WHERE prodID = ?', [prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, id], (error) => {
             if (error) {
                 return reject(error);
             }
