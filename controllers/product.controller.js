@@ -57,7 +57,7 @@ prodRouter.post('/', async (req, res, next) => {
 
 
 
-prodRouter.patch('/:id', async (req, res, next) => {
+prodRouter.put('/:id', async (req, res, next) => {
     try {
         const prodTitle = req.body.prodTitle;
         const prodCat = req.body.prodCat;
