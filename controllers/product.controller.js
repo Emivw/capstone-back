@@ -74,7 +74,7 @@ prodRouter.put('/:id', async (req, res, next) => {
 
 
 
-        const products = await db.insertprod(prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, id);
+        const products = await db.updateProd(prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, id);
         res.json({ products: products });
 
 
