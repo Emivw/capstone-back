@@ -73,9 +73,9 @@ db.insertUser = (role_id, email, password, fullname, phone) => {
 };
 
 
-db.updateUser = (fullname, role_id, email, password, id) => {
+db.updateUser = (fullname, role_id, email, password, phone, id) => {
     return new Promise((resolve, reject) => {
-        pool.query('UPDATE User SET fullname = ?, role_id= ?, email= ?, password=?, phone=? WHERE id = ?', [fullname, role_id, email, password, phone, id], (error) => {
+        pool.query('UPDATE Users SET fullname = ?, role_id= ?, email = ?, password = ?, phone = ? WHERE id = ?', [fullname, role_id, email, password, phone, id], (error) => {
             if (error) {
                 return reject(error);
             }
@@ -89,7 +89,7 @@ db.updateUser = (fullname, role_id, email, password, id) => {
 
 db.deleteUser = (id) => {
     return new Promise((resolve, reject) => {
-        pool.query('DELETE FROM User WHERE id = ?', [id], (error) => {
+        pool.query('DELETE FROM Users WHERE id = ?', [id], (error) => {
             if (error) {
                 return reject(error);
             }

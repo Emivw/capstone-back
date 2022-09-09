@@ -87,7 +87,7 @@ userRouter.put('/:id', async (req, res, next) => {
         const id = req.params.id;
 
 
-        if (!fullname || !role || !email || !password) {
+        if (!fullname || !role_id || !email || !password) {
             return res.sendStatus(400);
         }
 
