@@ -82,6 +82,7 @@ userRouter.put('/:id', async (req, res, next) => {
         const fullname = req.body.fullname;
         const role_id = req.body.role_id;
         const email = req.body.email;
+        const phone = req.body.phone;
         let password = req.body.password;
         const id = req.params.id;
 
