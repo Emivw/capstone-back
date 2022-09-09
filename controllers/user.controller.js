@@ -110,9 +110,12 @@ userRouter.put('/:id', async (req, res, next) => {
 
 userRouter.delete('/:id', async (req, res, next) => {
     try {
-        const userId = req.params.id;
-        const user = await db.deleteUser(userId);
-        return res.sendStatus(204);
+        const id = req.params.id
+        const users = await db.deleteUser(id);
+        res.json({
+            status: "204",
+            message: "user deleted"
+        })
 
     } catch (e) {
         console.log(e);
