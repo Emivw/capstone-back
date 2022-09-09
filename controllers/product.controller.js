@@ -65,17 +65,16 @@ prodRouter.put('/:id', async (req, res, next) => {
         const prodDesc = req.body.prodDesc;
         const prodPrice = req.body.prodPrice;
         const prodImg1 = req.body.prodImg1;
-        const prodImgs = req.body.prodImgs;
         const id = req.params.id;
 
 
-        if (!prodTitle || !prodCat || !prodStock || !prodDesc || !prodColor || !prodPrice || !prodImg1 || !prodImgs) {
+        if (!prodTitle || !prodCat || !prodStock || !prodDesc || !prodColor || !prodPrice || !prodImg1 ) {
             return res.sendStatus(400);
         }
 
 
 
-        const products = await db.insertprod(prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, prodImgs, id);
+        const products = await db.insertprod(prodTitle, prodCat, prodStock, prodDesc, prodColor, prodPrice, prodImg1, id);
         res.json({ products: products });
 
 
